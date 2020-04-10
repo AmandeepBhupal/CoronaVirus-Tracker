@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+<head>
+    <title>Corona Virus Tracker Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+
+<body>
+<div class="container">
+<h1>Coronavirus Tracker Application</h1>
+<p>This application calculates the total Coronavirus cases across the globe
+    and updates live.</p>
+
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${totalReportedCases}"></h1>
+    <p class="lead">Total number of cases reported as of today</p>
+    <hr class="my-4">
+    <p>
+        <span>New cases reported since previous day: </span>
+        <span th:text="${totalNewCases}"></span>
+    </p>
+</div>
+
+
+
+<table class="table">
+    <tr>
+        <th>State</th>
+        <th>Country</th>
+        <th>Difference From Previous Cases</th>
+        <th>Total Cases</th>
+
+    </tr>
+    <tr th:each="locationStat : ${locationStats}">
+        <td th:text="${locationStat.getState()}">State</td>
+        <td th:text="${locationStat.getCountry()}">Country"</td>
+        <td th:text="${locationStat.getDiffFromPrev()}">Difference From Prev
+            cases</td>
+        <td th:text="${locationStat.getLatestTotalCases()}">Total Cases</td>
+
+    </tr>
+</table>
+</div>
+</body>
+
+</html>
